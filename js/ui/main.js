@@ -4947,18 +4947,11 @@ function isForCurrentUser(entry) {
 }
 
 function parseHash() {
-  // Alternate args should be names and values
-  if (location.hash.substring(0, 3) != '#!/') {
-    return {}
-  }
-  var arg_arr = location.hash.substring(3).split('/')
   var args = {}
-  for (var i = 0; i < arg_arr.length + 1; i = i + 2) {
-    var n = arg_arr[i]
-    var v = arg_arr[i + 1]
-    if (n && v) {
-      args[n] = v
-    }
+  var vars = location.search.substring(1).split('&')
+  for (var i = 0; i < vars.length; i++) {
+    var pair = vars[i].split('=')
+    if (pair[0] && pair[1]) args[pair[0]] = pair[1]
   }
   return args
 }
