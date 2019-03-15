@@ -5238,6 +5238,30 @@ window.addEventListener('load', function() {
           ) {
             openQuestionWindow(question[Qi_question_id])
           })
+        } else if (args['disputeID']) {
+          var RealitioArbitratorProxy = contract(
+            require('./realitio-arbitrator-proxy.json')
+          )
+          RealitioArbitratorProxy.setProvider(web3js.currentProvider)
+          RealitioArbitratorProxy.at(
+            {
+              1: '0x8d2eba437b416938349bd1ac06eee517abd71f25',
+              42: '0x561e82de1ae5e5e025008e23d795691887824c0e'
+            }[net_id]
+          ).then(function(realitioArbitratorProxy) {
+            realitioArbitratorProxy
+              .DisputeIDToQuestionID(
+                { _disputeID: args['disputeID'] },
+                { fromBlock: 0, toBlock: 'latest' }
+              )
+              .get(function(err, logs) {
+                ensureQuestionDetailFetched(logs[0].args._questionID).then(
+                  function(question) {
+                    openQuestionWindow(question[Qi_question_id])
+                  }
+                )
+              })
+          })
         }
 
         // NB If this fails we'll try again when we need to do something using the account

@@ -1200,8 +1200,6 @@ footer .cols ul {
   z-index: 2;
   height: 55px;
   width: 100%;
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
   background-color: $blue;
   text-align: center;
   line-height: 55px;
@@ -1230,6 +1228,7 @@ footer .cols ul {
   position: absolute;
   left: 16px;
   top: 17px;
+  display: none !important;
 }
 
 .rcbrowser-control > span {
