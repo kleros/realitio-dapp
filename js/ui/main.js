@@ -4947,13 +4947,7 @@ function isForCurrentUser(entry) {
 }
 
 function parseHash() {
-  var args = {}
-  var vars = location.search.substring(1).split('&')
-  for (var i = 0; i < vars.length; i++) {
-    var pair = vars[i].split('=')
-    if (pair[0] && pair[1]) args[pair[0]] = pair[1]
-  }
-  return args
+  return JSON.parse(decodeURIComponent(location.search.substring(1)))
 }
 
 function populateArbitratorOptionLabel(op, fee, txt, tos) {
