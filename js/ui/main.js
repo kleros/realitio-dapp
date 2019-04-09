@@ -5239,8 +5239,8 @@ window.addEventListener('load', function() {
           RealitioArbitratorProxy.setProvider(web3js.currentProvider)
           RealitioArbitratorProxy.at(
             {
-              1: '0x8d2eba437b416938349bd1ac06eee517abd71f25',
-              42: '0x561e82de1ae5e5e025008e23d795691887824c0e'
+              1: '0x15daedbebf8083620ffbe9a675fb53b40c12d2ac',
+              42: '0xfa74dee72c7279e420f65e09297b21e196d1db75'
             }[net_id]
           ).then(function(realitioArbitratorProxy) {
             realitioArbitratorProxy
